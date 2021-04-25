@@ -31,7 +31,7 @@ class Components {
     );
   }
 
-  myButton() {
+  myButton(Future click) {
     return Container(
       width: double.infinity,
       height: 42,
@@ -43,10 +43,7 @@ class Components {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.0),
                 side: BorderSide(color: Colors.deepPurple, width: 6))),
-        onPressed: () {
-          print("Test");
-          //click();
-        },
+        onPressed: () => {print("Test"), click},
         child: Text("Go to the Game "),
       ),
     );

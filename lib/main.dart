@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:myfirstapplication/Game.dart';
+import 'package:myfirstapplication/Screen.dart';
 import 'Components.dart';
 
 void main() {
   runApp(MaterialApp(
+    routes: {
+      '/home': (_) => MyApp(),
+      '/Game': (_) => Game(),
+      '/Screen': (context) => Screen2()
+    },
     home: MyApp(),
   ));
 }
@@ -33,7 +40,46 @@ class MyApp extends StatelessWidget {
                   height: 12,
                 ),
               ),
-              comp.myButton(),
+              Container(
+                width: double.infinity,
+                height: 42,
+                padding: EdgeInsets.symmetric(horizontal: 28),
+                child: ElevatedButton(
+                  style: TextButton.styleFrom(
+                      primary: Colors.white,
+                      backgroundColor: Colors.orange,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
+                          side:
+                              BorderSide(color: Colors.deepPurple, width: 6))),
+                  onPressed: () => {
+                    print("Test"),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return Game();
+                      }),
+                    )
+                  },
+                  child: Text("Go to the Game "),
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                height: 42,
+                padding: EdgeInsets.symmetric(horizontal: 28),
+                child: ElevatedButton(
+                  style: TextButton.styleFrom(
+                      primary: Colors.white,
+                      backgroundColor: Colors.red,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
+                          side: BorderSide(color: Colors.black, width: 6))),
+                  onPressed: () =>
+                      {print("Test"), Navigator.pushNamed(context, '/Screen')},
+                  child: Text("Go to Screen 2"),
+                ),
+              )
             ],
           ),
         ),
